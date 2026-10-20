@@ -216,7 +216,7 @@ ul { padding: 0; list-style: none; }
 .yatai-text { display: flex; flex-direction: column; gap: 16px; padding: 0 var(--gutter); }
 .yatai-text p:not(.eyebrow) { font-size: 14px; color: var(--ink-2); }
 .yatai-img-main { margin-left: var(--gutter); aspect-ratio: 4 / 3; overflow: hidden; }
-.yatai-img-sub { width: 56%; max-width: 300px; aspect-ratio: 4 / 5; overflow: hidden; margin: -40px 0 0 var(--gutter); }
+.yatai-img-sub { width: 56%; max-width: 300px; aspect-ratio: 4 / 5; overflow: hidden; margin: 8px var(--gutter) 0 auto; }
 .yatai img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
 .yatai-img-main:hover img, .yatai-img-sub:hover img { transform: scale(1.03); }
 .vendors { margin: 16px var(--gutter) 0; display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 1px solid var(--ink); }
