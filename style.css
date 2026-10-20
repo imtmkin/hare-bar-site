@@ -212,50 +212,61 @@ ul { padding: 0; list-style: none; }
 }
 
 /* yatai */
-.yatai { padding: 72px 0 0; display: flex; flex-direction: column; gap: 24px; }
-.yatai-text { display: flex; flex-direction: column; gap: 16px; padding: 0 var(--gutter); }
+.yatai { padding: 72px 0 0; display: grid; grid-template-columns: 5fr 7fr; column-gap: 16px; row-gap: 20px; }
+.yatai-text { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 16px; padding: 0 var(--gutter); }
 .yatai-text p:not(.eyebrow) { font-size: 14px; color: var(--ink-2); }
-.yatai-media { display: flex; gap: 6px; height: 56vw; max-height: 360px; }
-.yatai-img-main { flex: 1 1 62%; min-width: 0; overflow: hidden; }
-.yatai-img-sub { flex: 1 1 38%; min-width: 0; overflow: hidden; }
+.yatai-media { display: contents; }
+.yatai-img-main { grid-column: 1 / -1; aspect-ratio: 4 / 3; overflow: hidden; }
+.yatai-img-sub { grid-column: 1; aspect-ratio: 1 / 1; overflow: hidden; margin-left: var(--gutter); }
 .yatai img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
 .yatai-img-main:hover img, .yatai-img-sub:hover img { transform: scale(1.03); }
-.vendors { margin: 16px var(--gutter) 0; display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 1px solid var(--ink); }
-.vendors p:not(.eyebrow) { font-size: 13px; color: var(--ink-2); }
-.vendors-title { font-family: var(--serif); font-size: 22px !important; font-weight: 700; line-height: 1.4; color: var(--ink) !important; }
-@media (min-width: 768px) { .yatai-media { gap: 8px; } }
+.vendors { grid-column: 2; margin: 0 var(--gutter) 0 0; display: flex; flex-direction: column; gap: 8px; align-self: center; }
+.vendors p:not(.eyebrow) { font-size: 12px; color: var(--ink-2); }
+.vendors-title { font-family: var(--serif); font-size: 18px !important; font-weight: 700; line-height: 1.4; color: var(--ink) !important; }
+.vendors .textlink { font-size: 13px; }
+@media (min-width: 768px) {
+  .yatai { grid-template-columns: 4fr 8fr; column-gap: 24px; row-gap: 28px; }
+  .vendors-title { font-size: 22px !important; }
+  .vendors p:not(.eyebrow) { font-size: 13px; }
+}
 @media (min-width: 1024px) {
-  .yatai { padding: 140px var(--gutter) 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 32px; }
+  .yatai { padding: 140px var(--gutter) 0; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 32px; }
   .yatai-text { grid-column: 2 / span 4; grid-row: 1 / span 2; align-self: center; padding: 0; gap: 28px; }
   .yatai-text p:not(.eyebrow) { font-size: 15px; }
-  .yatai-media { display: contents; }
-  .yatai-img-main { grid-column: 7 / span 6; grid-row: 1; aspect-ratio: 4 / 3; }
-  .yatai-img-sub { grid-column: 7 / span 2; grid-row: 2; aspect-ratio: 1 / 1; }
-  .vendors { grid-column: 10 / span 3; grid-row: 2; margin: 0; padding-top: 0; border-top: 0; gap: 14px; align-self: start; }
+  .yatai-img-main { grid-column: 7 / span 6; grid-row: 1; }
+  .yatai-img-sub { grid-column: 7 / span 2; grid-row: 2; margin: 0; }
+  .vendors { grid-column: 10 / span 3; grid-row: 2; margin: 0; gap: 14px; align-self: start; }
   .vendors p:not(.eyebrow) { font-size: 14px; }
   .vendors-title { font-size: 24px !important; }
+  .vendors .textlink { font-size: 14px; }
 }
 
-/* people (hidden until photos arrive) */
-.people { padding: 88px var(--gutter) 0; display: flex; flex-direction: column; gap: 32px; }
+/* people */
+.people { padding: 88px var(--gutter) 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 16px; }
+.people-head, .people-lead, .p1, .students { grid-column: 1 / -1; }
+.p3 { padding-top: 40px; }
 .people-lead { font-size: 14px; color: var(--ink-2); }
 .person { display: flex; flex-direction: column; gap: 12px; }
-.portrait { aspect-ratio: 4 / 5; overflow: hidden; background: var(--line); }
+.portrait { aspect-ratio: 4 / 5; overflow: hidden; background: var(--line); display: flex; align-items: flex-end; padding: 12px; }
+.ph { font-size: 11px; letter-spacing: .15em; color: var(--gray); }
 .portrait img, .square img { width: 100%; height: 100%; object-fit: cover; }
-.person-name { font-family: var(--serif); font-size: 24px; font-weight: 700; }
-.person-role { font-family: var(--sans); font-size: 11px; letter-spacing: .15em; color: var(--gray); margin-left: 12px; font-weight: 400; }
+.person-name { font-family: var(--serif); font-size: 22px; font-weight: 700; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.p2 .person-name, .p3 .person-name { font-size: 20px; }
+.person-role { font-family: var(--sans); font-size: 11px; letter-spacing: .15em; color: var(--gray); font-weight: 400; }
 .person-bio { font-size: 13px; color: var(--ink-2); }
 .students { display: flex; flex-direction: column; gap: 20px; padding-top: 28px; border-top: 1px solid var(--ink); }
 .students-head p:not(.eyebrow) { font-size: 13px; color: var(--ink-2); }
 .students-title { font-family: var(--serif); font-size: 22px !important; font-weight: 700; color: var(--ink) !important; }
 .students-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.square { aspect-ratio: 1 / 1; overflow: hidden; background: var(--line); }
+.square { aspect-ratio: 1 / 1; overflow: hidden; background: var(--line); display: flex; align-items: flex-end; padding: 10px; }
 .student p { display: flex; flex-direction: column; margin-top: 8px; }
 .student b { font-size: 15px; }
 .student span { font-size: 11px; color: var(--gray); }
 @media (min-width: 1024px) {
-  .people { padding: 160px var(--gutter) 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 72px; }
+  .people { padding: 160px var(--gutter) 0; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 72px; }
   .people-head { grid-column: 2 / span 3; }
+  .person-name { font-size: 28px; }
+  .p2 .person-name, .p3 .person-name { font-size: 28px; }
   .people-lead { grid-column: 5 / span 5; align-self: end; font-size: 15px; }
   .p1 { grid-column: 2 / span 4; }
   .p2 { grid-column: 7 / span 3; padding-top: 96px; }
