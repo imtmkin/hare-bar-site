@@ -215,22 +215,25 @@ ul { padding: 0; list-style: none; }
 .yatai { padding: 72px 0 0; display: flex; flex-direction: column; gap: 24px; }
 .yatai-text { display: flex; flex-direction: column; gap: 16px; padding: 0 var(--gutter); }
 .yatai-text p:not(.eyebrow) { font-size: 14px; color: var(--ink-2); }
-.yatai-img-main { margin-left: var(--gutter); aspect-ratio: 4 / 3; overflow: hidden; }
-.yatai-img-sub { width: 56%; max-width: 300px; aspect-ratio: 4 / 5; overflow: hidden; margin: 8px var(--gutter) 0 auto; }
+.yatai-media { display: flex; gap: 6px; height: 56vw; max-height: 360px; }
+.yatai-img-main { flex: 1 1 62%; min-width: 0; overflow: hidden; }
+.yatai-img-sub { flex: 1 1 38%; min-width: 0; overflow: hidden; }
 .yatai img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
 .yatai-img-main:hover img, .yatai-img-sub:hover img { transform: scale(1.03); }
 .vendors { margin: 16px var(--gutter) 0; display: flex; flex-direction: column; gap: 12px; padding-top: 24px; border-top: 1px solid var(--ink); }
 .vendors p:not(.eyebrow) { font-size: 13px; color: var(--ink-2); }
 .vendors-title { font-family: var(--serif); font-size: 22px !important; font-weight: 700; line-height: 1.4; color: var(--ink) !important; }
+@media (min-width: 768px) { .yatai-media { gap: 8px; } }
 @media (min-width: 1024px) {
-  .yatai { padding: 140px var(--gutter) 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 48px; }
-  .yatai-text { grid-column: 2 / span 4; padding: 80px 0 0; gap: 28px; }
+  .yatai { padding: 140px var(--gutter) 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 32px; }
+  .yatai-text { grid-column: 2 / span 4; grid-row: 1 / span 2; align-self: center; padding: 0; gap: 28px; }
   .yatai-text p:not(.eyebrow) { font-size: 15px; }
-  .yatai-img-main { grid-column: 7 / span 6; margin: 0; }
-  .yatai-img-sub { grid-column: 4 / span 3; width: auto; max-width: none; margin: 0; }
-  .vendors { grid-column: 8 / span 4; margin: 0; padding-top: 40px; gap: 16px; }
+  .yatai-media { display: contents; }
+  .yatai-img-main { grid-column: 7 / span 6; grid-row: 1; aspect-ratio: 4 / 3; }
+  .yatai-img-sub { grid-column: 7 / span 2; grid-row: 2; aspect-ratio: 1 / 1; }
+  .vendors { grid-column: 10 / span 3; grid-row: 2; margin: 0; padding-top: 0; border-top: 0; gap: 14px; align-self: start; }
   .vendors p:not(.eyebrow) { font-size: 14px; }
-  .vendors-title { font-size: 26px !important; }
+  .vendors-title { font-size: 24px !important; }
 }
 
 /* people (hidden until photos arrive) */
