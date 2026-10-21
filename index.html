@@ -17,6 +17,35 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="style.css">
+  <link rel="canonical" href="https://hare-bar.com/">
+  <!-- Google Search Console: 所有権確認の meta タグ。発行されたら下の行の先頭の <!-- と末尾の --> を外して content を入れる
+  <meta name="google-site-verification" content="ここに発行された値">
+  -->
+  <!-- Google Analytics 4: 測定 ID(G-XXXXXXXXXX)が決まったら下の2行のコメントを外して ID を入れる
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "ハレバ",
+    "alternateName": "hare-bar 湘南台",
+    "description": "湘南台駅前、屋根つき約100坪の持ち込みBBQ・イベントスペース・屋台村。",
+    "url": "https://hare-bar.com/",
+    "image": "https://hare-bar.com/images/ogp-1200x630.jpg",
+    "servesCuisine": "バーベキュー",
+    "address": {
+      "@type": "PostalAddress",
+      "postalCode": "252-0804",
+      "addressRegion": "神奈川県",
+      "addressLocality": "藤沢市",
+      "streetAddress": "湘南台2丁目7-13 湘南台ウエストプラザ 3番地",
+      "addressCountry": "JP"
+    },
+    "email": "info@hare-bar.com"
+  }
+  </script>
 </head>
 <body>
 
@@ -266,7 +295,7 @@
     <p>みんなの「ハレ舞台」。人が集まる「場」。湘南台はいつも「晴れ」。</p>
   </div>
   <p class="footer-legal">
-    <span>運営: <a href="http://ideax.co.jp/" target="_blank" rel="noopener">株式会社イディアクロス</a> ・ 写真はイメージです</span>
+    <span>運営: <a href="http://ideax.co.jp/" target="_blank" rel="noopener">株式会社イディアクロス</a> ・ <a href="privacy.html">プライバシーポリシー</a> ・ 写真はイメージです</span>
     <span>© 2026 HAREBA</span>
   </p>
 </footer>
@@ -282,6 +311,18 @@
   });
   nav.addEventListener('click', function (e) {
     if (e.target.tagName === 'A') { document.body.classList.remove('nav-open'); btn.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // 計測: 予約・メール・Instagram・出店相談のクリックを GA4 に送る(gtag が無いときは何もしない)
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a'); if (!a || typeof window.gtag !== 'function') return;
+    var href = a.getAttribute('href') || '';
+    var name = href.indexOf('mailto:') === 0 ? 'click_mail'
+      : href.indexOf('instagram.com') > -1 ? 'click_instagram'
+      : href.indexOf('tablecheck') > -1 ? 'click_reserve'
+      : a.closest('#reserve') ? 'click_reserve'
+      : a.closest('.vendors') ? 'click_vendor' : null;
+    if (name) gtag('event', name, { link_text: (a.textContent || '').trim().slice(0, 40) });
   });
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
