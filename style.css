@@ -261,7 +261,8 @@ ul { padding: 0; list-style: none; }
 .square { aspect-ratio: 1 / 1; overflow: hidden; background: var(--line); display: flex; align-items: flex-end; padding: 10px; }
 .student p { display: flex; flex-direction: column; margin-top: 8px; }
 .student b { font-size: 15px; }
-.student span { font-size: 11px; color: var(--gray); }
+.student span { font-size: 11px; color: var(--gray); letter-spacing: .05em; }
+.student .bio { font-size: 12px; color: var(--ink-2); letter-spacing: 0; margin-top: 6px; line-height: 1.7; }
 @media (min-width: 1024px) {
   .people { padding: 160px var(--gutter) 0; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 72px; }
   .people-head { grid-column: 2 / span 3; }
