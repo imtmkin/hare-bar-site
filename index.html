@@ -12,11 +12,12 @@
   <meta property="og:image" content="https://hare-bar.com/images/ogp-1200x630.jpg">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111111'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23F5F4F1' font-family='serif' font-weight='700'%3E晴%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23141311'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23F4F2EE' font-family='serif' font-weight='700'%3E晴%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.className += ' js';</script>
   <link rel="canonical" href="https://hare-bar.com/">
   <!-- Google Search Console の所有権確認タグ。発行されたら次の行をコメントの外に出し、content に値を入れる
   <meta name="google-site-verification" content="VERIFICATION_TOKEN">
@@ -57,6 +58,7 @@
     <a href="#bbq">持ち込みBBQ</a>
     <a href="#stage">イベント</a>
     <a href="#yatai">屋台村</a>
+    <a href="#people">つくる人</a>
     <a href="#price">料金</a>
     <a href="#access">アクセス</a>
     <a class="nav-cta" href="#reserve">予約</a>
@@ -73,12 +75,12 @@
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="hero-body">
       <div class="hero-main">
-        <p class="kicker light">湘南台駅前 ― 屋根つき ― 100坪</p>
-        <h1 class="hero-title">駅前に、<br>100坪の火を。</h1>
+        <p class="kicker light" data-load style="--d:200ms">湘南台駅前 ― 屋根つき ― 100坪</p>
+        <h1 class="hero-title"><span class="line" data-line style="--i:0">駅前に、</span><span class="line" data-line style="--i:1">100坪の火を。</span></h1>
       </div>
-      <div class="hero-side">
+      <div class="hero-side" data-load style="--d:700ms">
         <p class="hero-lead">持ち込みBBQ、イベント、屋台村。<br>雨でも、風でも、予定どおり。</p>
-        <a class="btn btn-light" href="#reserve">BBQを予約する<span aria-hidden="true">→</span></a>
+        <a class="btn btn-light" href="#reserve">予約について<span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -101,29 +103,36 @@
     </div>
   </section>
 
-  <section class="faces reveal">
+  <!-- 三つの顔: 行に触れると、右に写真が開く -->
+  <section class="faces reveal" id="faces">
     <div class="faces-head">
       <p class="eyebrow">THREE FACES</p>
       <p class="muted">同じ100坪が、三つの顔を持つ。</p>
     </div>
-    <a class="face" href="#bbq">
-      <span class="face-num">01</span>
-      <span class="face-title">持ち込みBBQ</span>
-      <span class="face-desc">好きな食材を持ち寄って、中央の大きな焼き場を囲む。浜焼き、冬は鍋と牡蠣。ハレバの主役。</span>
-      <span class="face-arrow" aria-hidden="true">→</span>
-    </a>
-    <a class="face" href="#stage">
-      <span class="face-num">02</span>
-      <span class="face-title">みんなのハレ舞台</span>
-      <span class="face-desc">のど自慢、40歳以上限定ディスコナイト、落語、和太鼓、キッズダンス、貸切の宴会。平日と夜の顔。</span>
-      <span class="face-arrow" aria-hidden="true">→</span>
-    </a>
-    <a class="face" href="#yatai">
-      <span class="face-num">03</span>
-      <span class="face-title">湘南屋台村</span>
-      <span class="face-desc">湘南の人気店が屋台で並ぶ。行くたびに顔ぶれが変わる。通年の土台。</span>
-      <span class="face-arrow" aria-hidden="true">→</span>
-    </a>
+    <div class="faces-list">
+      <a class="face" href="#bbq" data-preview="images/bbq.jpg">
+        <span class="face-num">01</span>
+        <span class="face-title">持ち込みBBQ</span>
+        <span class="face-desc">好きな食材を持ち寄って、中央の大きな焼き場を囲む。浜焼き、冬は鍋と牡蠣。ハレバの主役。</span>
+        <span class="face-arrow" aria-hidden="true">→</span>
+        <img class="face-thumb" src="images/bbq.jpg" alt="" width="1672" height="941" loading="lazy">
+      </a>
+      <a class="face" href="#stage" data-preview="images/hero.jpg">
+        <span class="face-num">02</span>
+        <span class="face-title">みんなのハレ舞台</span>
+        <span class="face-desc">のど自慢、40歳以上限定ディスコナイト、落語、和太鼓、キッズダンス、貸切の宴会。平日と夜の顔。</span>
+        <span class="face-arrow" aria-hidden="true">→</span>
+        <img class="face-thumb" src="images/hero.jpg" alt="" width="1672" height="941" loading="lazy">
+      </a>
+      <a class="face" href="#yatai" data-preview="images/yatai.jpg">
+        <span class="face-num">03</span>
+        <span class="face-title">湘南屋台村</span>
+        <span class="face-desc">湘南の人気店が屋台で並ぶ。行くたびに顔ぶれが変わる。通年の土台。</span>
+        <span class="face-arrow" aria-hidden="true">→</span>
+        <img class="face-thumb" src="images/yatai.jpg" alt="" width="1448" height="1086" loading="lazy">
+      </a>
+      <div class="faces-frame" id="facesFrame" aria-hidden="true"><img alt="" src="images/bbq.jpg"></div>
+    </div>
   </section>
 
   <section id="bbq" class="bbq reveal">
@@ -139,7 +148,17 @@
         <li>屋根の下。雨でも風でも、予定は変えない</li>
         <li>ドリンクバーあり。お酒は20歳になってから</li>
       </ul>
-      <a class="textlink" href="#reserve">空き状況を見る<span aria-hidden="true">→</span></a>
+      <a class="textlink" href="#reserve">予約について<span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <!-- 焼き場: 熾火の写真に、一文だけ -->
+  <section class="fire" aria-label="焼き場">
+    <img class="fire-img" src="images/found/sutbul.jpg" alt="赤く熾った炭。切り口の年輪まで見える備長炭の束" width="1920" height="1280" loading="lazy">
+    <div class="fire-shade" aria-hidden="true"></div>
+    <div class="fire-body reveal">
+      <p class="eyebrow light">THE FIRE</p>
+      <p class="fire-say">中央に、ひとつの大きな焼き場。<br>火を囲めば、隣の席はもう知り合いだ。</p>
     </div>
   </section>
 
@@ -193,7 +212,7 @@
     </div>
   </section>
 
-  <!-- つくる人: 顔写真と紹介文が揃ったら、.portrait / .square の中を <img src="images/people/xxx.jpg" alt="名前"> に置き換え、肩書きと紹介文を埋める -->
+  <!-- つくる人: 写真は指の下で少し沈む -->
   <section id="people" class="people reveal">
     <div class="people-head">
       <p class="eyebrow">PEOPLE</p>
@@ -201,18 +220,18 @@
     </div>
     <p class="people-lead">火をつける3人「火付け役」と、火を絶やさない学生4人「ハレ番」。仕掛けるのは私たち。この場所をつくるのは、来る人と、街の人です。</p>
     <div class="persons">
-    <div class="person p2">
-      <div class="portrait"><img src="images/people/yoshida.jpg" alt="吉田範之" width="820" height="1024" loading="lazy"></div>
+    <div class="person">
+      <div class="portrait tilt"><img src="images/people/yoshida.jpg" alt="吉田範之" width="820" height="1024" loading="lazy"><i class="tilt-shade" aria-hidden="true"></i></div>
       <p class="person-name">吉田 範之 <span class="person-role">火付け役 ・ 舞台監督</span></p>
       <p class="person-bio">「湘南台に、火を囲める場所がない」。その一言から、ハレバは始まった。空いた100坪を見て、BBQ場でも屋台村でもステージでもある場所を思いついた人。以来、この舞台の段取りを組み続けている。</p>
     </div>
-    <div class="person p3">
-      <div class="portrait"><img src="images/people/imai.jpg" alt="今井智紀" width="820" height="1024" loading="lazy"></div>
+    <div class="person">
+      <div class="portrait tilt"><img src="images/people/imai.jpg" alt="今井智紀" width="820" height="1024" loading="lazy"><i class="tilt-shade" aria-hidden="true"></i></div>
       <p class="person-name">今井 智紀 <span class="person-role">火付け役 ・ WEB・SNS</span></p>
       <p class="person-bio">慶應義塾大学 SFC 在学。ハレバのホームページと SNS を担当。ハレの日が生まれる瞬間を、外に届ける。</p>
     </div>
-    <div class="person p1">
-      <div class="portrait"><img src="images/people/shibata.jpg" alt="柴田幸彦" width="820" height="1024" loading="lazy"></div>
+    <div class="person">
+      <div class="portrait tilt"><img src="images/people/shibata.jpg" alt="柴田幸彦" width="820" height="1024" loading="lazy"><i class="tilt-shade" aria-hidden="true"></i></div>
       <p class="person-name">柴田 幸彦 <span class="person-role">火付け役 ・ 火の伝道者</span></p>
       <p class="person-bio">BBQ道10年。炎で場を演出し、火の扱いと、いちばん美味しい焼き方を伝える人。魚も肉もパイナップルも、丸ごと火にかけるのが流儀。</p>
     </div>
@@ -224,10 +243,10 @@
         <p>企画、撮影、投稿、イベント運営。ハレの日の火を絶やさない、慶應 SFC の学生4人。</p>
       </div>
       <div class="students-grid">
-        <div class="student"><div class="square"><img src="images/people/imai-sq.jpg" alt="今井智紀" width="600" height="600" loading="lazy"></div><p><b>今井 智紀</b><span>慶應義塾大学 SFC ・ 発信番</span><span class="bio">HP と SNS をつくる。火付け役と兼任。</span><span class="bio">絶対焼きたいのは、マシュマロ。</span></p></div>
-        <div class="student"><div class="square"><img src="images/people/fukudome-sq.jpg" alt="福留大祐" width="600" height="600" loading="lazy"></div><p><b>福留 大祐</b><span>慶應義塾大学 SFC ・ 企画番</span><span class="bio">インプット中毒。本も動画も事例も、片っ端から頭に入れてくる。知識量は4人でいちばん、バイト経験はゼロ。だからこそ、次のハレ舞台を仕込む係。</span><span class="bio">絶対焼きたいのは、玉ねぎ。</span></p></div>
-        <div class="student"><div class="square"><img src="images/people/kikuchi-sq.jpg" alt="菊地昊毅" width="600" height="600" loading="lazy"></div><p><b>菊地 昊毅</b><span>慶應義塾大学 SFC ・ 現場番</span><span class="bio">バイト経験は数知れず。受付、ドリンク、片付けまで、現場の段取りが体に入っている。ハレ番の現場リーダー。</span><span class="bio">絶対焼きたいのは、ニンニク。</span></p></div>
-        <div class="student"><div class="square"><img src="images/people/araki-sq.jpg" alt="荒木耀介" width="600" height="600" loading="lazy"></div><p><b>荒木 耀介</b><span>慶應義塾大学 SFC ・ なんでも番</span><span class="bio">撮影も受付も火起こしも、頼めばだいたいできる万能型。冬は雪山に消える(スノーボード)。</span><span class="bio">絶対焼きたいのは、イカ。</span></p></div>
+        <div class="student"><div class="square tilt"><img src="images/people/imai-sq.jpg" alt="今井智紀" width="600" height="600" loading="lazy"><i class="tilt-shade" aria-hidden="true"></i></div><p><b>今井 智紀</b><span>慶應義塾大学 SFC ・ 発信番</span><span class="bio">HP と SNS をつくる。火付け役と兼任。</span><span class="bio">絶対焼きたいのは、マシュマロ。</span></p></div>
+        <div class="student"><div class="square tilt"><img src="images/people/fukudome-sq.jpg" alt="福留大祐" width="600" height="600" loading="lazy"><i class="tilt-shade" aria-hidden="true"></i></div><p><b>福留 大祐</b><span>慶應義塾大学 SFC ・ 企画番</span><span class="bio">インプット中毒。本も動画も事例も、片っ端から頭に入れてくる。知識量は4人でいちばん、バイト経験はゼロ。だからこそ、次のハレ舞台を仕込む係。</span><span class="bio">絶対焼きたいのは、玉ねぎ。</span></p></div>
+        <div class="student"><div class="square tilt"><img src="images/people/kikuchi-sq.jpg" alt="菊地昊毅" width="600" height="600" loading="lazy"><i class="tilt-shade" aria-hidden="true"></i></div><p><b>菊地 昊毅</b><span>慶應義塾大学 SFC ・ 現場番</span><span class="bio">バイト経験は数知れず。受付、ドリンク、片付けまで、現場の段取りが体に入っている。ハレ番の現場リーダー。</span><span class="bio">絶対焼きたいのは、ニンニク。</span></p></div>
+        <div class="student"><div class="square tilt"><img src="images/people/araki-sq.jpg" alt="荒木耀介" width="600" height="600" loading="lazy"><i class="tilt-shade" aria-hidden="true"></i></div><p><b>荒木 耀介</b><span>慶應義塾大学 SFC ・ なんでも番</span><span class="bio">撮影も受付も火起こしも、頼めばだいたいできる万能型。冬は雪山に消える(スノーボード)。</span><span class="bio">絶対焼きたいのは、イカ。</span></p></div>
       </div>
     </div>
   </section>
@@ -254,11 +273,15 @@
     </div>
   </section>
 
+  <!-- 予約: テーブルチェックの予約ページへ。URL が決まるまでは案内のみ -->
   <section id="reserve" class="reserve reveal">
     <div class="reserve-box">
-      <div>
+      <img class="reserve-img" src="images/hero.jpg" alt="" width="1672" height="941" loading="lazy">
+      <div class="reserve-shade" aria-hidden="true"></div>
+      <div class="reserve-text">
+        <p class="eyebrow light">RESERVATION</p>
         <h2 class="display sm">BBQの予約は、オンラインで。</h2>
-        <p class="muted-dark">オープンに合わせて予約ページを開きます。それまでのお問い合わせはメールへ。</p>
+        <p class="muted-dark">オープンに合わせて、予約ページ(テーブルチェック)を開きます。それまでのお問い合わせはメールへ。</p>
       </div>
       <a class="btn btn-accent" href="#contact">予約ページ(準備中)<span aria-hidden="true">→</span></a>
     </div>
@@ -282,9 +305,10 @@
 
 </main>
 
+<!-- 閉じ: 炭色の面に、連絡先と、火の粉で描いた名前(指でなぞると散り、また集まる) -->
 <footer id="contact" class="site-footer">
   <div class="contact">
-    <p class="eyebrow">CONTACT</p>
+    <p class="eyebrow light">CONTACT</p>
     <p>貸切、イベントの持ち込み、屋台の出店、取材のご相談。</p>
     <a class="mail" href="mailto:info@hare-bar.com">info@hare-bar.com</a>
     <a class="insta" href="https://www.instagram.com/" target="_blank" rel="noopener">INSTAGRAM<span aria-hidden="true">→</span></a>
@@ -293,50 +317,16 @@
     <p class="footer-logo">ハレバ</p>
     <p>みんなの「ハレ舞台」。人が集まる「場」。湘南台はいつも「晴れ」。</p>
   </div>
+  <div class="mark" id="mark">
+    <canvas class="mark-canvas" id="markCanvas" role="img" aria-label="ハレバ。火の粉で描いた名前。指でなぞると散り、また集まります"></canvas>
+    <span class="mark-text" id="markText" aria-hidden="true">ハレバ</span>
+  </div>
   <p class="footer-legal">
-    <span>運営: <a href="http://ideax.co.jp/" target="_blank" rel="noopener">株式会社イディアクロス</a> ・ <a href="terms.html">ご利用規約</a> ・ <a href="privacy.html">プライバシーポリシー</a> ・ 写真はイメージです</span>
+    <span>運営: <a href="http://ideax.co.jp/" target="_blank" rel="noopener">株式会社イディアクロス</a> ・ <a href="terms.html">ご利用規約</a> ・ <a href="privacy.html">プライバシーポリシー</a> ・ 写真はイメージです。炭火の写真は <a href="https://commons.wikimedia.org/wiki/File:Sutbul.jpg">“Sutbul”</a>(mino park, CC0, Wikimedia Commons)</span>
     <span>© 2026 HAREBA</span>
   </p>
 </footer>
 
-<script>
-(function () {
-  var btn = document.getElementById('menuBtn');
-  var nav = document.getElementById('nav');
-  btn.addEventListener('click', function () {
-    var open = document.body.classList.toggle('nav-open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
-  });
-  nav.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A') { document.body.classList.remove('nav-open'); btn.setAttribute('aria-expanded', 'false'); }
-  });
-
-  // 計測: 予約・メール・Instagram・出店相談のクリックを GA4 に送る(gtag が無いときは何もしない)
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest('a'); if (!a || typeof window.gtag !== 'function') return;
-    var href = a.getAttribute('href') || '';
-    var name = href.indexOf('mailto:') === 0 ? 'click_mail'
-      : href.indexOf('instagram.com') > -1 ? 'click_instagram'
-      : href.indexOf('tablecheck') > -1 ? 'click_reserve'
-      : a.closest('#reserve') ? 'click_reserve'
-      : a.closest('.vendors') ? 'click_vendor' : null;
-    if (name) gtag('event', name, { link_text: (a.textContent || '').trim().slice(0, 40) });
-  });
-
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var els = document.querySelectorAll('.reveal');
-  if (reduce || !('IntersectionObserver' in window)) {
-    els.forEach(function (el) { el.classList.add('is-in'); });
-    return;
-  }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
-    });
-  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
-  els.forEach(function (el) { io.observe(el); });
-})();
-</script>
+<script src="site.js"></script>
 </body>
 </html>

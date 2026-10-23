@@ -1,0 +1,48 @@
+[
+ {
+  "file": "ligula/projects/hareba/web/site/images/found/sutbul.jpg",
+  "media": "image",
+  "ref": "commons:59146499",
+  "title": "Sutbul",
+  "creator": "mino park",
+  "creatorUrl": null,
+  "date": "2014-04-13",
+  "license": "CC0",
+  "licenseCode": "cc0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "creditRequired": false,
+  "page": "https://commons.wikimedia.org/wiki/File:Sutbul.jpg",
+  "via": "Wikimedia Commons",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Sutbul.jpg/1920px-Sutbul.jpg",
+  "width": 1920,
+  "height": 1280,
+  "bytes": 623469,
+  "credit": "\"Sutbul\" by mino park, CC0, via Wikimedia Commons",
+  "notes": [],
+  "saved": "2026-10-23T12:37:52.760Z"
+ },
+ {
+  "file": "ligula/projects/hareba/web/site/images/found/shonandai-sta-w.jpg",
+  "media": "image",
+  "ref": "commons:19566952",
+  "title": "Shonandai-Sta-W",
+  "creator": "Nyao148",
+  "creatorUrl": null,
+  "date": "2012-05-23",
+  "license": "CC BY-SA 3.0",
+  "licenseCode": "by-sa",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "creditRequired": true,
+  "page": "https://commons.wikimedia.org/wiki/File:Shonandai-Sta-W.JPG",
+  "via": "Wikimedia Commons",
+  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Shonandai-Sta-W.JPG/1920px-Shonandai-Sta-W.JPG",
+  "width": 1920,
+  "height": 1353,
+  "bytes": 470182,
+  "credit": "\"Shonandai-Sta-W\" by Nyao148, CC BY-SA 3.0, via Wikimedia Commons",
+  "notes": [
+   "Share-alike: an altered version (recoloured, combined with other pictures) must be shared under the same licence."
+  ],
+  "saved": "2026-10-23T12:37:54.229Z"
+ }
+]
