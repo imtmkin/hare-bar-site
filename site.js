@@ -1,6 +1,5 @@
 /* ハレバ hare-bar.com — ページの動き。ライブラリなし。
-   1. メニューと計測  2. 現れる動き  3. 三つの顔(行に触れると右に写真が開く)
-   4. 沈むカード(bencho の Tilt を移植)  5. 火の粉の名前(bencho の Particles を移植)
+   1. メニューと計測  2. 現れる動き  4. 沈むカード(bencho の Tilt を移植)  5. 火の粉の名前(bencho の Particles を移植)
    bencho(https://github.com/cabralorenzo/bencho、MIT)の React 実装を、このサイト用に素の JS で書き直したもの。 */
 (function () {
   'use strict';
@@ -42,29 +41,6 @@
     reveals.forEach(function (el) { io.observe(el); });
     /* 保険: 何かの理由で発火しなくても、3 秒後には全部見える */
     setTimeout(function () { reveals.forEach(function (el) { el.classList.add('is-in'); }); }, 3000);
-  }
-
-  /* ── 3. 三つの顔: 行に触れると、その行の高さに合わせて右に写真が開く ── */
-  var list = document.querySelector('.faces-list'), frame = document.getElementById('facesFrame');
-  if (list && frame && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    var pic = frame.querySelector('img'), warmed = false;
-    var show = function (row) {
-      if (!warmed) { warmed = true; list.querySelectorAll('[data-preview]').forEach(function (a) { new Image().src = a.dataset.preview; }); }
-      pic.src = row.dataset.preview;
-      var y = row.offsetTop + row.offsetHeight / 2 - frame.offsetHeight / 2;
-      var max = list.offsetHeight - frame.offsetHeight;
-      var opening = !frame.classList.contains('is-open');
-      if (opening) frame.style.transitionProperty = 'clip-path';
-      frame.style.transform = 'translateY(' + Math.min(max, Math.max(0, y)) + 'px)';
-      if (opening) { frame.getBoundingClientRect(); frame.style.transitionProperty = ''; }
-      frame.classList.add('is-open');
-    };
-    list.querySelectorAll('.face').forEach(function (row) {
-      row.addEventListener('pointerenter', function () { show(row); });
-      row.addEventListener('focus', function () { show(row); });
-    });
-    list.addEventListener('pointerleave', function () { frame.classList.remove('is-open'); });
-    list.addEventListener('focusout', function (e) { if (!list.contains(e.relatedTarget)) frame.classList.remove('is-open'); });
   }
 
   /* ── 4. 沈むカード: 指の下が引っ込み、向こう側が持ち上がる ───────── */
