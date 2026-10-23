@@ -169,32 +169,24 @@ ul { padding: 0; list-style: none; }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; max-width: 780px; font-size: 15px; }
 }
 
-/* three faces: 行に触れると、背景にその写真が広がり、文字が白に反転する */
-.faces { position: relative; padding: 0 var(--gutter) 72px; display: flex; flex-direction: column; isolation: isolate; transition: color .5s var(--ease); }
-.faces-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
-.faces-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.06); transition: opacity .7s var(--ease-expo), transform 1.6s var(--ease-expo); }
-.faces-bg img.is-on { opacity: 1; transform: scale(1); }
-.faces-scrim { position: absolute; inset: 0; background: rgba(20, 19, 17, .66); opacity: 0; transition: opacity .6s var(--ease-expo); }
-.faces.is-lit .faces-scrim { opacity: 1; }
-.js .faces.reveal > .faces-bg { opacity: 1; transform: none; transition: none; }
-.faces.is-lit, .faces.is-lit .face, .faces.is-lit .muted, .faces.is-lit .face-desc, .faces.is-lit .face-num { color: var(--paper); }
-.faces.is-lit .eyebrow { color: var(--accent-on-dark); }
-.faces.is-lit .faces-head { border-bottom-color: var(--paper); }
-.faces.is-lit .face { border-bottom-color: rgba(244, 242, 238, .28); }
-.faces.is-lit .face:not(.is-hot) { opacity: .42; }
-.faces.is-lit .face.is-hot .face-title { color: var(--paper); }
-.faces-head { display: flex; flex-direction: column; gap: 6px; padding-bottom: 16px; border-bottom: 1px solid var(--ink); transition: border-color .45s; }
+/* three faces: 行に触れると、その行だけが写真の帯になり、文字が白に反転する(CSS だけで動く) */
+.faces { padding: 0 var(--gutter) 72px; display: flex; flex-direction: column; }
+.faces-head { display: flex; flex-direction: column; gap: 6px; padding-bottom: 16px; border-bottom: 1px solid var(--ink); }
 .faces-list { position: relative; }
-.face { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; padding: 24px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: color .45s var(--ease), opacity .45s var(--ease), border-color .45s; }
-.face:hover { color: var(--ink); }
-.face:hover .face-title { color: var(--accent); }
+.face { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; padding: 24px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: color .45s var(--ease), border-color .45s; }
+.face-bg { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; object-position: center 55%; opacity: 0; transform: scale(1.05); transition: opacity .55s var(--ease-expo), transform 1.4s var(--ease-expo); }
+.face-scrim { position: absolute; inset: 0; z-index: -1; background: rgba(20, 19, 17, .6); opacity: 0; transition: opacity .5s var(--ease-expo); }
+.face:hover .face-bg, .face:focus-visible .face-bg { opacity: 1; transform: scale(1); }
+.face:hover .face-scrim, .face:focus-visible .face-scrim { opacity: 1; }
+.face:hover, .face:focus-visible { color: var(--paper); border-bottom-color: transparent; }
+.face:hover .face-num, .face:hover .face-desc, .face:hover .face-title { color: var(--paper); }
 .face-num { grid-column: 1; font-family: var(--serif); font-size: 14px; color: var(--gray); }
 .face-title { grid-column: 1; font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: .03em; transition: color .3s; }
 .face-desc { grid-column: 1; font-size: 14px; color: var(--ink-2); }
 .face-arrow { grid-column: 2; grid-row: 1 / span 3; align-self: center; font-size: 20px; transition: transform .3s var(--ease); }
 .face:hover .face-arrow { transform: translateX(6px); }
 @media (min-width: 1024px) {
-  .faces { padding: 96px var(--gutter) 150px; margin-top: -96px; }
+  .faces { padding-bottom: 150px; }
   .faces-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding-bottom: 28px; }
   .faces-head .eyebrow { grid-column: 2 / span 3; }
   .faces-head .muted { grid-column: 5 / span 7; }
@@ -394,8 +386,8 @@ ul { padding: 0; list-style: none; }
 .insta { font-size: 12px; letter-spacing: .18em; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; gap: 10px; }
 .footer-brand { display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: var(--gray-2); padding-top: 20px; border-top: 1px solid var(--line-dark); }
 .footer-logo { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--paper); letter-spacing: .22em; }
-.mark { position: relative; height: 34vw; max-height: 300px; margin: 8px calc(-1 * var(--gutter)) 0; }
-.mark-text { position: absolute; left: 50%; top: 0; transform: translateX(-50%); font-family: var(--serif); font-weight: 800; font-size: 32vw; line-height: 1; white-space: nowrap; color: var(--accent); letter-spacing: .04em; }
+.mark { position: relative; height: 40vw; max-height: 380px; margin: 8px calc(-1 * var(--gutter)) 0; }
+.mark-text { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: var(--serif); font-weight: 800; font-size: 27vw; line-height: 1; white-space: nowrap; color: var(--accent); letter-spacing: .04em; }
 .mark-canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: pan-y; }
 .js .mark.is-live .mark-text { visibility: hidden; }
 .footer-legal { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--gray-2); padding-top: 18px; border-top: 1px solid var(--line-dark); }
@@ -408,8 +400,8 @@ ul { padding: 0; list-style: none; }
   .insta { font-size: 13px; }
   .footer-brand { grid-column: 8 / span 4; padding-top: 48px; border: 0; font-size: 13px; }
   .footer-brand .footer-logo { font-size: 18px; }
-  .mark { grid-column: 1 / -1; height: 22vw; max-height: 320px; margin-top: 0; }
-  .mark-text { font-size: 21vw; }
+  .mark { grid-column: 1 / -1; height: 30vw; max-height: 440px; margin-top: 0; }
+  .mark-text { font-size: 24vw; }
   .footer-legal { grid-column: 2 / span 10; flex-direction: row; justify-content: space-between; padding-top: 24px; }
   .footer-legal span:first-child { max-width: 64ch; }
 }
