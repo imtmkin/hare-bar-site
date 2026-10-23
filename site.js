@@ -1,5 +1,6 @@
 /* ハレバ hare-bar.com — ページの動き。ライブラリなし。
-   1. メニューと計測  2. 現れる動き  4. 沈むカード(bencho の Tilt を移植)  5. 火の粉の名前(bencho の Particles を移植)
+   1. メニューと計測  2. 現れる動き  3. 三つの顔(行に触れると背景に写真が広がる)
+   4. 沈むカード(bencho の Tilt を移植)  5. 火の粉の名前(bencho の Particles を移植)
    bencho(https://github.com/cabralorenzo/bencho、MIT)の React 実装を、このサイト用に素の JS で書き直したもの。 */
 (function () {
   'use strict';
@@ -41,6 +42,28 @@
     reveals.forEach(function (el) { io.observe(el); });
     /* 保険: 何かの理由で発火しなくても、3 秒後には全部見える */
     setTimeout(function () { reveals.forEach(function (el) { el.classList.add('is-in'); }); }, 3000);
+  }
+
+  /* ── 3. 三つの顔: 行に触れると、背景にその写真が広がる(ホバーできる端末だけ) ── */
+  var faces = document.getElementById('faces');
+  if (faces && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var rows = faces.querySelectorAll('.face'), pics = faces.querySelectorAll('.faces-bg img');
+    var light = function (i) {
+      faces.classList.add('is-lit');
+      rows.forEach(function (r, j) { r.classList.toggle('is-hot', j === i); });
+      pics.forEach(function (p, j) { p.classList.toggle('is-on', j === i); });
+    };
+    var dark = function () {
+      faces.classList.remove('is-lit');
+      rows.forEach(function (r) { r.classList.remove('is-hot'); });
+      pics.forEach(function (p) { p.classList.remove('is-on'); });
+    };
+    rows.forEach(function (row, i) {
+      row.addEventListener('pointerenter', function () { light(i); });
+      row.addEventListener('focus', function () { light(i); });
+      row.addEventListener('blur', dark);
+    });
+    faces.querySelector('.faces-list').addEventListener('pointerleave', dark);
   }
 
   /* ── 4. 沈むカード: 指の下が引っ込み、向こう側が持ち上がる ───────── */
