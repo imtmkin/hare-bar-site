@@ -40,6 +40,8 @@
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
     }, { rootMargin: '0px 0px 60% 0px', threshold: 0.01 });
     reveals.forEach(function (el) { io.observe(el); });
+    /* 保険: 何かの理由で発火しなくても、3 秒後には全部見える */
+    setTimeout(function () { reveals.forEach(function (el) { el.classList.add('is-in'); }); }, 3000);
   }
 
   /* ── 3. 三つの顔: 行に触れると、その行の高さに合わせて右に写真が開く ── */
